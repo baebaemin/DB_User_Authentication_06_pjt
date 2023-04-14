@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="lh-lg"> Create Account</h2>
+<form action="{% url 'accounts:signup' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-success" type="submit" value="signup">
+</form>
+{% endblock content %}

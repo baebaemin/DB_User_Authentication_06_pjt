@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+  <h1>DETAIL</h1>
+  <hr />
+
+
+  <div id="movie-content">
+    <p>{{movie.title}}</p>
+    <p>{{movie.description}}</p>
+    <p>생성시각 : {{movie.created_at}}</p>
+    <p>수정시각 : {{movie.updated_at}}</p>
+
+    <hr>
+    <a href="{% url 'movies:update' movie.pk %}">수정하기</a>
+    <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="삭제하기"/>
+    </form>
+    <br>
+    <hr>
+    <a href="{% url 'movies:index' %}">목록보기</a>
+  </div>
+{% endblock content %}
